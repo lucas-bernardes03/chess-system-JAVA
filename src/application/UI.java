@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import chess.ChessMatch;
@@ -55,8 +54,16 @@ public class UI {
         System.out.println();
         printCapturedPieces(captured);
         System.out.println("Turn: " + chessMatch.getTurn());
-        System.out.println("Waiting payer: " + chessMatch.getCurrentPlayer());
-        if(chessMatch.isCheck()) System.out.println("CHECK!");
+        
+        if(!chessMatch.isCheckmate()){
+            System.out.println("Waiting payer: " + chessMatch.getCurrentPlayer());
+            if(chessMatch.isCheck()) System.out.println("CHECK!");
+        }
+        else{
+            System.out.println("CHECMATE!");
+            System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+        }
+        
     }
 
 
